@@ -13,15 +13,16 @@ async function getPhotographers() {
 }
 
 async function displayData(photographers) {
-    const photographersSection = document.querySelector(
+    const photographersSection =  document.querySelector(
         ".photographer_section"
     );
-
-    photographers.forEach((photographer) => {
-        const photographerModel = photographerTemplate(photographer);
-        const userCardDOM = photographerModel.getUserCardDOM();
-        photographersSection.appendChild(userCardDOM);
-    });
+    if (photographersSection) {
+        photographers.forEach((photographer) => {
+            const photographerModel = photographerTemplate(photographer);
+            const userCardDOM = photographerModel.getUserCardDOM();
+            photographersSection.appendChild(userCardDOM);
+        });
+    }
 }
 
 async function init() {

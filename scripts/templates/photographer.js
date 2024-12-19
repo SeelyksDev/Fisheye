@@ -7,7 +7,7 @@ function photographerTemplate(data) {
         const article = document.createElement("article");
         article.innerHTML = `
             <a href="../../photographer.html?id=${id}" target="_blank">
-                <img src=${picture} alt="Portrait de ${name}"></img>
+                <img src=${picture ? picture : "account.png"} alt="Portrait de ${name}"></img>
                 <h2>${name}</h2>
                 <p class="overview-location">${city}, ${country}</p>
                 <p class="overview-description">${tagline}</p>

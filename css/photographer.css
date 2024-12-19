@@ -3,9 +3,42 @@
 }
 
 .photograph-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 56px 50px;
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    border-radius: 5px;
+}
+
+.photograph-name {
+    color: #D3573C;
+    font-weight: 300;
+    font-size: 64px;
+    margin: 0;
+}
+
+.photograph-location {
+    display: flex;
+    font-size: 24px;
+    color: #901C1C;
+    font-style: normal;
+    margin-bottom: 19px;
+}
+
+.photograph-city {
+    margin: 0;
+}
+
+.photograph-country {
+    margin: 0 0 0 8px;
+}
+
+.photograph-description {
+    margin: 0;
+    font-size: 18px;
 }
 
 .contact_button {
@@ -19,6 +52,13 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.photograph-img {
+    height: 250px;
+    width: 250px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .modal {

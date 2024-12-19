@@ -52,6 +52,11 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+
+    &:hover {
+        background-color: #DB8876;
+        color: black;
+    }
 }
 
 .photograph-img {
@@ -60,6 +65,27 @@
     object-fit: cover;
     border-radius: 50%;
 }
+
+.form-select {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.label-select {
+    font-size: 18px;
+}
+
+#select {
+    padding: 23px 20px;
+    font-size: 18px;
+    margin-left: 24px;
+    background-color: #901C1C;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
 
 .modal {
     border-radius: 5px;

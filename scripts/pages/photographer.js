@@ -4,7 +4,6 @@ async function getPhotographerById(id) {
     const data = await getPhotographers();
     const dataDetails = data.photographers;
     const dataMedias = data.media;
-    console.log(dataDetails);
 
     const photographerDetails = dataDetails.find(
         (photographer) => photographer.id === id
@@ -63,8 +62,6 @@ async function displayGalleryWorks() {
     if (photographerId) {
         const { photographerMedia, photographerDetails } =
             await getPhotographerById(toNumberId);
-        console.log(photographerMedia);
-        console.log(photographerDetails);
 
         if (photographerMedia) {
             const workGallery = document.querySelector(".work-gallery");
@@ -77,9 +74,13 @@ async function displayGalleryWorks() {
                          ? `<img src="./assets/images/${photographerDetails.name}/${media.image}" alt="${media.title}" class="card-media">`
                          : ""
                  }
-                 ${media.video ? `<video controls class="card-media">>
+                 ${
+                     media.video
+                         ? `<video controls class="card-media">>
                     <source src="./assets/images/${photographerDetails.name}/${media.video}" type="video/mp4"/>
-                    </video>` : ""}
+                    </video>`
+                         : ""
+                 }
                     <div class="card-description">
                         <p class="card-title">${media.title}</p>
                         <div class="card-likes-stats">
@@ -90,6 +91,7 @@ async function displayGalleryWorks() {
                 </article>
                 `)
             );
+            
         }
     }
 }

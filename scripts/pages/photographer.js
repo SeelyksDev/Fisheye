@@ -34,7 +34,6 @@ async function displayGalleryWorks(id) {
         if (photographerMedia && photographerDetails) {
             const select = document.getElementById("select");
 
-          
             function renderGallery(media) {
                 const workGallery = document.querySelector(".work-gallery");
                 workGallery.innerHTML = "";
@@ -47,14 +46,13 @@ async function displayGalleryWorks(id) {
                 });
             }
 
-            
             let sortedMedia = photographerMedia.sort(
                 (a, b) => b.likes - a.likes
             );
             renderGallery(sortedMedia);
 
-            
             select.addEventListener("change", (e) => {
+                numberOfLikes = 0;
                 if (e.target.value === "popularity") {
                     sortedMedia = photographerMedia.sort(
                         (a, b) => b.likes - a.likes

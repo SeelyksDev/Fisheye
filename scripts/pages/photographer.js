@@ -32,11 +32,43 @@ async function displayGalleryWorks(id) {
             await getPhotographerById(id);
 
         if (photographerMedia && photographerDetails) {
-            const sortedMedia = photographerMedia.sort((a, b) => b.likes - a.likes);
+            const select = document.getElementById("select");
+
+          
+            function renderGallery(media) {
+                const workGallery = document.querySelector(".work-gallery");
+                workGallery.innerHTML = "";
+                media.forEach((photographMedia) => {
+                    const galleryModel = galleryTemplate(
+                        photographMedia,
+                        photographerDetails
+                    );
+                    galleryModel.getGalleryDOM();
+                });
+            }
+
             
-            sortedMedia.forEach((photographMedia) => {
-                const galleryModel = galleryTemplate(photographMedia, photographerDetails);
-                galleryModel.getGalleryDOM();
+            let sortedMedia = photographerMedia.sort(
+                (a, b) => b.likes - a.likes
+            );
+            renderGallery(sortedMedia);
+
+            
+            select.addEventListener("change", (e) => {
+                if (e.target.value === "popularity") {
+                    sortedMedia = photographerMedia.sort(
+                        (a, b) => b.likes - a.likes
+                    );
+                } else if (e.target.value === "date") {
+                    sortedMedia = photographerMedia.sort(
+                        (a, b) => new Date(b.date) - new Date(a.date)
+                    );
+                } else if (e.target.value === "title") {
+                    sortedMedia = photographerMedia.sort((a, b) =>
+                        a.title.localeCompare(b.title)
+                    );
+                }
+                renderGallery(sortedMedia);
             });
         }
     }

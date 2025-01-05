@@ -1,3 +1,4 @@
+
 body {
     position: relative;
 }
@@ -81,7 +82,16 @@ body {
     font-size: 18px;
 }
 
-#select {
+.custom-select {
+    position: relative;
+    width: 170px;
+}
+
+.custom-select select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
     padding: 23px 20px;
     font-size: 18px;
     margin-left: 24px;
@@ -89,7 +99,25 @@ body {
     border: none;
     border-radius: 5px;
     color: white;
+    cursor: pointer;
+    width: 100%;
 }
+
+.custom-select::after {
+    content: '';
+    position: absolute;
+    top: 55%;
+    right: -10%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-image: url('/assets/icons/arrow-down.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
+
+
 
 .background-modal {
     display: none;
@@ -102,9 +130,7 @@ body {
     z-index: 1;
 }
 
-#contact_modal {
-
-}
+#contact_modal {}
 
 .modal {
     position: absolute;
@@ -121,7 +147,7 @@ body {
     justify-content: space-between;
     padding: 35px;
     margin: auto;
-    
+
 }
 
 .modal-header {
@@ -145,9 +171,7 @@ body {
     margin: 0;
 }
 
-.modal-title-name {
-
-}
+.modal-title-name {}
 
 .modal-form {
     display: flex;
@@ -228,6 +252,65 @@ body {
     max-height: 30px;
     margin-left: 6px;
 }
+
+.carousel-modal {
+    display: none;
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: white;
+    z-index: 1000;
+}
+
+.lightbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.arrow-image {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.lightbox-cross {
+    position: absolute;
+    top: 0%;
+    right: -9%;
+    cursor: pointer;
+}
+
+.lightbox-arrow {
+    position: absolute;
+    top: 40%;
+    cursor: pointer;
+}
+
+.lightbox-arrow-left {
+   left: -70px;
+}
+
+.lightbox-arrow-right {
+    right: -70px;
+}
+
+.lightbox-media {
+    width: 1050px;
+    height: 900px;
+    object-fit: cover;
+    box-shadow: 5px 0 0 #b0b0b0;
+    border-radius: 5px;
+}
+
+.lightbox-title {
+    margin-top: 10px;
+    font-size: 24px;
+    color: #901C1C;
+}
+
 
 .likes-price {
     position: fixed;

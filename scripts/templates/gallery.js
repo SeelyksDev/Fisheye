@@ -1,22 +1,21 @@
 let numberOfLikes = 0;
 
 function galleryTemplate(media, details) {
-
     function getGalleryDOM() {
         numberOfLikes += Number(media.likes);
-        const likesCounter = document.querySelector('.likes-stats');
+        const likesCounter = document.querySelector(".likes-stats");
         const workGallery = document.querySelector(".work-gallery");
         workGallery.innerHTML += `
-                <article class="work-card">
+                <article class="work-card" data-title="${media.title}" data-id="${media.id}">
                  ${
                      media.image
-                         ? `<img src="./assets/images/${details.name}/${media.image}" alt="${media.title}" class="card-media">`
+                         ? `<img src="assets/images/${details.name}/${media.image}" alt="${media.title}" class="card-media">`
                          : ""
                  }
                  ${
                      media.video
                          ? `<video class="card-media">>
-                    <source src="./assets/images/${details.name}/${media.video}" type="video/mp4"/>
+                    <source src="assets/images/${details.name}/${media.video}" type="video/mp4"/>
                     </video>`
                          : ""
                  }
@@ -29,7 +28,7 @@ function galleryTemplate(media, details) {
                     </div>
                 </article>
                 `;
-                likesCounter.textContent = numberOfLikes;
+        likesCounter.textContent = numberOfLikes;
     }
     return { getGalleryDOM };
 }

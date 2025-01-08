@@ -1,4 +1,5 @@
 let numberOfLikes = 0;
+let isLiked = false;
 
 function galleryTemplate(media, details) {
     function getGalleryDOM() {
@@ -6,7 +7,9 @@ function galleryTemplate(media, details) {
         const likesCounter = document.querySelector(".likes-stats");
         const workGallery = document.querySelector(".work-gallery");
         workGallery.innerHTML += `
-                <article class="work-card" data-title="${media.title}" data-id="${media.id}">
+                <article class="work-card" data-title="${
+                    media.title
+                }" data-id="${media.id}">
                  ${
                      media.image
                          ? `<img src="assets/images/${details.name}/${media.image}" alt="${media.title}" class="card-media">`
@@ -29,6 +32,21 @@ function galleryTemplate(media, details) {
                 </article>
                 `;
         likesCounter.textContent = numberOfLikes;
+
+        const hearts = document.querySelectorAll(".card-heart");
+        hearts.forEach((heart) => {
+            heart.addEventListener("click", (event) => {
+                event.stopPropagation();
+                if (!isLiked) {
+                    numberOfLikes++;
+                    isLiked = true;
+                    getGalleryDOM();
+                } else if (isLiked) {
+                    numberOfLikes--;
+                    isLiked = false;
+                }
+            });
+        });
     }
     return { getGalleryDOM };
 }

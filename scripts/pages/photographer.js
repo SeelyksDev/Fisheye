@@ -44,6 +44,18 @@ async function displayGalleryWorks(id) {
                     );
                     galleryModel.getGalleryDOM();
                 });
+                const workCards = document.querySelectorAll(".work-card");
+                workCards.forEach((workCard) => {
+                    workCard.addEventListener("click", () => {
+                        const id = workCard.dataset.id;
+                        const carousel = modalCarouselTemplate(
+                            photographerMedia,
+                            photographerDetails,
+                            id
+                        );
+                        carousel.getCarouselDOM();
+                    });
+                });
             }
 
             let sortedMedia = photographerMedia.sort(
@@ -67,19 +79,6 @@ async function displayGalleryWorks(id) {
                     );
                 }
                 renderGallery(sortedMedia);
-            });
-
-            const workCards = document.querySelectorAll(".work-card");
-            workCards.forEach((workCard) => {
-                workCard.addEventListener("click", () => {
-                    const id = workCard.dataset.id;
-                    const carousel = modalCarouselTemplate(
-                        photographerMedia,
-                        photographerDetails,
-                        id
-                    );
-                    carousel.getCarouselDOM();
-                });
             });
         }
     }
